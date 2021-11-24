@@ -11,20 +11,23 @@
 <body>
     <h1>Exemplo 02</h1>
     <canvas></canvas>
-    <img src="assets/skeleton01.png">
     <script>
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
         const skelly = new Image();
-        skelly.stc = "assets/skeleton01.png";
+        skelly.src = "assets/skelly.png";
 
         skelly.addEventListener("load", terminowDeCarregar);
 
         ctx.fillStyle = 'lightcyan';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+        let l = 2;
+        let c = 1;
         function terminowDeCarregar() {
-            ctx.drawImage(skelly, 0, 0);
+            ctx.drawImage(skelly,
+            c*64, l*64, 64, 64,
+            0,0,64,64);
+
         }
     </script>
 </body>
