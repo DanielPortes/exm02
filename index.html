@@ -15,7 +15,8 @@
     <script>
         const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
-        const skelly = document.querySelector("img");
+        const skelly = new Image();
+        skelly.stc = "assets/skeleton01.png";
 
         skelly.addEventListener("load", terminowDeCarregar);
 
@@ -23,8 +24,6 @@
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         function terminowDeCarregar() {
-
-
             ctx.drawImage(skelly, 0, 0);
         }
     </script>
