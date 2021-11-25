@@ -28,22 +28,27 @@
 
         let l = 2;
         let c = 1;
+        let pose = 0;
+        let quadro = 0;
+        const POSES = [
+            7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 6, 6, 6, 6,
+            13, 13, 13, 13, 6
+        ];
         function terminowDeCarregar() {
         }
         let t0;
         let dt;
+
         requestAnimationFrame(passo);
         function passo(t) {
             t0 = t0 ?? t;
             dt = (t - t0) / 1000;
             desenhaFundo();
-            c = c + 8 * dt;
-            if(c>6)
-            {
-                c=0;
-            }
+
+            quadro = (quadro >= POSES[pose] - 1) ? 0 : quadro + 9 * dt;
+
             ctx.drawImage(skelly,
-                Math.floor(c) * 64, l * 64, 64, 64,
+                Math.floor(quadro) * 64, pose * 64, 64, 64,
                 0, 0, 64, 64);
 
             requestAnimationFrame(passo);
