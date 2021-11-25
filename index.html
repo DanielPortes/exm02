@@ -54,9 +54,7 @@
             t0 = t0 ?? t;
             dt = (t - t0) / 1000;
             desenhaFundo();
-            // alterei a expressao abaixo por remover um dos quadros da animacao
-            // original : (quadro >= POSES[pose].qmax -1)  ...
-            quadro = (quadro >= POSES[pose].qmax) ? 0 : quadro + POSES[pose].pv * dt;
+            quadro = (quadro >= POSES[pose].qmax - 1) ? 0 : quadro + POSES[pose].pv * dt;
             ctx.drawImage(ken,
                 //sx, sy, sw, sh
                 //dx, dy, dw ,dh
