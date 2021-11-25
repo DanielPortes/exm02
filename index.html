@@ -16,10 +16,10 @@
         canvas.width = 520;
         canvas.height = 320;
         const ctx = canvas.getContext('2d');
-        const skelly = new Image();
-        skelly.src = "assets/skelly.png";
+        const ken = new Image();
+        ken.src = "assets/ken.png";
 
-        skelly.addEventListener("load", terminowDeCarregar);
+        ken.addEventListener("load", terminowDeCarregar);
 
         function desenhaFundo() {
             {
@@ -30,31 +30,19 @@
 
         let l = 2;
         let c = 1;
-        let pose = 0;
+        let pose = 1;
         let quadro = 0;
         const POSES = [
-            { qmax: 7, pv: 9 },
-            { qmax: 7, pv: 9 },
-            { qmax: 7, pv: 9 },
-            { qmax: 7, pv: 9 },
-            { qmax: 7, pv: 9 },
-            { qmax: 8, pv: 9 },
-            { qmax: 8, pv: 9 },
-            { qmax: 8, pv: 9 },
-            { qmax: 8, pv: 9 },
-            { qmax: 9, pv: 9 },
-            { qmax: 9, pv: 9 },
-            { qmax: 9, pv: 9 },
-            { qmax: 9, pv: 9 },
-            { qmax: 6, pv: 9 },
-            { qmax: 6, pv: 9 },
-            { qmax: 6, pv: 9 },
-            { qmax: 6, pv: 9 },
-            { qmax: 13, pv: 19 },
-            { qmax: 13, pv: 19 },
-            { qmax: 13, pv: 19 },
-            { qmax: 13, pv: 19 },
-            { qmax: 6, pv: 9 }
+            { qmax: 4, pv: 1 },
+            { qmax: 4, pv: 4 },
+            { qmax: 3, pv: 3 },
+            { qmax: 5, pv: 5 },
+            { qmax: 2, pv: 2 },
+            { qmax: 4, pv: 4 },
+            { qmax: 5, pv: 5 },
+            { qmax: 6, pv: 6 },
+            { qmax: 7, pv: 7 },
+            { qmax: 1, pv: 1 },
         ];
         function terminowDeCarregar() {
         }
@@ -66,12 +54,14 @@
             t0 = t0 ?? t;
             dt = (t - t0) / 1000;
             desenhaFundo();
-
-            quadro = (quadro >= POSES[pose].qmax - 1) ? 0 : quadro + POSES[pose].pv * dt;
-
-            ctx.drawImage(skelly,
-                Math.floor(quadro) * 64, pose * 64, 64, 64,
-                0, 0, 64, 64);
+            // alterei a expressao abaixo por remover um dos quadros da animacao
+            // original : (quadro >= POSES[pose].qmax -1)  ...
+            quadro = (quadro >= POSES[pose].qmax) ? 0 : quadro + POSES[pose].pv * dt;
+            ctx.drawImage(ken,
+                //sx, sy, sw, sh
+                //dx, dy, dw ,dh
+                Math.floor(quadro) * 70, pose * 80, 70, 80,
+                0, 0, 70, 80);
 
             requestAnimationFrame(passo);
             t0 = t;
